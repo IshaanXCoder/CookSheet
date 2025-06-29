@@ -1,0 +1,56 @@
+{
+  "version": "2.0",
+  "rules": [
+    {
+      "id": "1751203794614",
+      "description": "\ud83d\udcac \"Tasks T1 and T3 should always run together\"\n\ud83d\udee0 Adds: { type: \"coRun\", tasks: [\"T1\", \"T3\"] }\n\n\ud83d\udcac \"Limit all workers in GroupA to 2 slots per phase\"\n\ud83d\udee0 Adds: { type: \"loadLimit\", workerGroup: \"GroupA\", maxSlotsPerPhase: 2 }\n\n\ud83d\udcac \"Only allow Task T2 to run in phase 2\"\n\ud83d\udee0 Adds: { type: \"phaseWindow\", task: \"T2\", allowedPhases: [2] }\n\n\ud83d\udcac \"Apply slot restriction for Tier1 clients to at least 2 common slots\"\n\ud83d\udee0 Adds: { type: \"slotRestriction\", group: \"Tier1\", minCommonSlots: 2 }",
+      "type": "coRun",
+      "parameters": {
+        "tasks": [
+          "t1",
+          "t3",
+          "t1",
+          "t3",
+          "t2",
+          "t2"
+        ],
+        "constraint": "together",
+        "enforcement": "strict",
+        "original_query": "\ud83d\udcac \"Tasks T1 and T3 should always run together\"\n\ud83d\udee0 Adds: { type: \"coRun\", tasks: [\"T1\", \"T3\"] }\n\n\ud83d\udcac \"Limit all workers in GroupA to 2 slots per phase\"\n\ud83d\udee0 Adds: { type: \"loadLimit\", workerGroup: \"GroupA\", maxSlotsPerPhase: 2 }\n\n\ud83d\udcac \"Only allow Task T2 to run in phase 2\"\n\ud83d\udee0 Adds: { type: \"phaseWindow\", task: \"T2\", allowedPhases: [2] }\n\n\ud83d\udcac \"Apply slot restriction for Tier1 clients to at least 2 common slots\"\n\ud83d\udee0 Adds: { type: \"slotRestriction\", group: \"Tier1\", minCommonSlots: 2 }"
+      }
+    },
+    {
+      "id": "suggestion_1751203825373",
+      "type": "efficiency",
+      "description": "Consider breaking down long tasks",
+      "parameters": {
+        "source": "ai_suggestion",
+        "confidence": 0.75,
+        "category": "efficiency"
+      }
+    },
+    {
+      "id": "suggestion_1751203831014",
+      "type": "skill_matching",
+      "description": "Implement skill-based task assignment",
+      "parameters": {
+        "source": "ai_suggestion",
+        "confidence": 0.8,
+        "category": "quality"
+      }
+    }
+  ],
+  "rule_count": 3,
+  "generated_at": "2025-06-29T13:30:54.349Z",
+  "rule_categories": {
+    "coRun": 1,
+    "efficiency": 1,
+    "skill_matching": 1
+  },
+  "validation_status": "passed",
+  "metadata": {
+    "created_by": "CookSheet v2.0",
+    "export_type": "production",
+    "format_version": "2.0"
+  }
+}

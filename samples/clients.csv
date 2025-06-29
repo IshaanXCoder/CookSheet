@@ -1,0 +1,4 @@
+ClientID,ClientName,PriorityLevel,RequestedTaskIDs,GroupTag,AttributesJSON
+C1,Delta Corp,5,T1,Tier1,"{""region"": ""East"", ""urgency"": ""high""}"
+C2,Omni Inc,3,"T2,T3",Tier2,"{""notes"": ""Trial only""}"
+C3,Xeno Works,2,T4,Tier1,"{""extra"": ""urgent""}"

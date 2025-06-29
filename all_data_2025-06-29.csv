@@ -1,0 +1,11 @@
+ClientID,ClientName,PriorityLevel,RequestedTaskIDs,GroupTag,AttributesJSON,data_type,WorkerID,WorkerName,Skills,AvailableSlots,MaxLoadPerPhase,WorkerGroup,QualificationLevel,TaskID,TaskName,Category,Duration,RequiredSkills,PreferredPhases,MaxConcurrent
+C1,Delta Corp,5.0,T1,Tier1,"{""region"": ""East"", ""urgency"": ""high""}",client,,,,,,,,,,,,,,
+C2,Omni Inc,3.0,"T2,T3",Tier2,"{""notes"": ""Trial only""}",client,,,,,,,,,,,,,,
+C3,Xeno Works,2.0,T4,Tier1,"{""extra"": ""urgent""}",client,,,,,,,,,,,,,,
+,,,,,,worker,W1,Alice,Python;DataCleaning,"[1,2,4]",2.0,GroupA,Advanced,,,,,,,
+,,,,,,worker,W2,Bob,HTML;CSS;JS,"[2,3,4]",3.0,GroupB,Intermediate,,,,,,,
+,,,,,,worker,W3,Charlie,ML;Python,"[1,3,5]",1.0,GroupA,Expert,,,,,,,
+,,,,,,task,,,,,,,,T1,Frontend UI,Development,1.0,HTML;CSS,[2],1.0
+,,,,,,task,,,,,,,,T2,Data Cleanup,Maintenance,2.0,DataCleaning,1-3,2.0
+,,,,,,task,,,,,,,,T3,Model Training,AI,3.0,ML;Python,"[1,2,5]",1.0
+,,,,,,task,,,,,,,,T4,QA Review,Testing,1.0,Python,[4],1.0

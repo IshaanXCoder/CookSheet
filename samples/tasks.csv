@@ -1,0 +1,5 @@
+TaskID,TaskName,Category,Duration,RequiredSkills,PreferredPhases,MaxConcurrent
+T1,Frontend UI,Development,1,HTML;CSS,[2],1
+T2,Data Cleanup,Maintenance,2,DataCleaning,"1-3",2
+T3,Model Training,AI,3,ML;Python,"[1,2,5]",1
+T4,QA Review,Testing,1,Python,[4],1

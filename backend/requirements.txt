@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pydantic
+pandas
+openai
+python-multipart
+aiofiles
+openpyxl
+xlsxwriter
+python-dotenv

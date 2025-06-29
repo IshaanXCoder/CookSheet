@@ -1,0 +1,174 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# 🚀 CookSheet Project Plan — cursor.rules.mdc
+# Cursor Rules for CookSheet Project 🧪
+
+## 🚀 Overview
+
+You're building a full-stack AI-powered spreadsheet configurator web app called **CookSheet**.  
+The goal is to help non-technical users upload messy CSV/XLSX data (clients, workers, tasks), validate and clean it using AI, define rules in plain English, and export clean configs for downstream tools.
+
+---
+
+## ⚙️ Tech Stack
+
+**Frontend:**  
+- Framework: Next.js 14  
+- Libraries: React, React Data Grid, XLSX, PapaParse, Axios, Tailwind (optional)
+
+**Backend:**  
+- Framework: FastAPI  
+- Libraries: Pandas, Pydantic, OpenAI, Uvicorn, aiofiles
+
+**AI Layer:**  
+- Rule parsing and suggestions using OpenAI or mocked logic via a module called `ai/rule_parser.py`
+
+---
+
+## 📐 Project Structure (So Far)
+
+## 🧪 Phase 1: Upload, Grid, and Parsing ✅
+
+### ✅ Goals
+- Upload `clients.csv`, `workers.csv`, `tasks.csv` (CSV/XLSX)
+- Display each dataset in a separate `react-data-grid` table
+- Enable inline editing
+- Run AI-based header mapper on upload (fuzzy mapping)
+- Store original + transformed data
+
+### 📁 Files
+- `frontend/components/Upload.js`
+- `frontend/components/DataGrid.js`
+- `backend/routes/upload.py`
+- `ai/header_mapper.py`
+
+---
+
+## ✅ Phase 2: Rule Input & Prioritization UI ✅
+
+### ✅ Goals
+- UI to input rules via natural language (`"T1 and T2 must co-run"`)
+- Generate rule config JSON in backend
+- Show parsed rules in UI with option to edit/delete
+- Add sliders to set prioritization weights (e.g., fairness vs priority)
+- Store rule weights in state
+
+### 📁 Files
+- `frontend/components/NLPQuery.js`
+- `frontend/components/RulePrioritySliders.js`
+- `backend/routes/rules.py`
+- `ai/rule_parser.py`
+
+---
+
+## 🧠 Phase 3: Validation Engine & Highlighting 🧨
+
+### 🚧 Goals
+- On upload and every edit, validate full dataset
+- Run core validations:
+  - Missing required columns
+  - Duplicate IDs
+  - Invalid numbers in lists
+  - JSON parsing errors
+  - Unknown references (RequestedTaskIDs not in task list)
+  - Out-of-range fields (e.g. Duration < 1)
+  - Conflicting constraints
+  - Phase saturation and concurrency
+  - Skill-to-task mismatch
+- Return errors per cell with location (row, column)
+- Highlight cells in red with tooltips in DataGrid
+- Show validation summary UI
+
+### 📁 Files
+- `backend/validators/engine.py`
+- `frontend/components/ValidationSummary.js`
+- Integrate into `DataGrid.js`
+
+---
+
+## 💬 Phase 4: Natural Language Query & Modification 🧨
+
+### 🚧 Goals
+- Search via English queries:  
+  `"All tasks > 1 phase and phase 2 preferred"`
+- AI filters dataset and updates grid
+- Modify via English command:  
+  `"Change MaxLoad of all sales workers to 5"`
+- Backend returns patch, UI confirms diff preview
+- Apply to grid + validate instantly
+
+### 📁 Files
+- `frontend/components/NLPModify.js`
+- `backend/routes/modify.py`
+- `ai/query_engine.py` (parse + filter)
+- `ai/modify_engine.py` (apply changes)
+
+---
+
+## 🎛️ Phase 5: Visual Rule Builder UI 🧩
+
+### 🚧 Goals
+- UI to define:
+  - Co-run: select TaskIDs
+  - Slot-restriction: select WorkerGroup
+  - Load-limits: select group + slots
+  - Regex match + rule template
+- Real-time JSON preview of rule object
+- Add to global rules list
+
+### 📁 Files
+- `frontend/components/RuleBuilder.js`
+- Extend `backend/routes/rules.py`
+
+---
+
+## 📦 Phase 6: Export Final Clean Config ✅
+
+### ✅ Goals
+- Export cleaned data (clients, tasks, workers)
+- Export `rules.json` with:
+  - UI/NLP rules
+  - Prioritization sliders
+  - Metadata like timestamp, author
+- Serve ZIP from backend
+
+### 📁 Files
+- `frontend/components/Export.js`
+- `backend/routes/export.py`
+
+---
+
+## 🧠 Phase 7: AI Rule Suggestions (Stretch) 🧠
+
+### 🚧 Goals
+- Run AI after data upload
+- Suggest intelligent rules like:
+  - “T1 and T3 always co-run”
+  - “Workers in Phase 2 overloaded, add slot limit”
+- Show dismissible cards to user
+- One-click accept → adds to rules list
+
+### 📁 Files
+- `ai/suggest_rules.py`
+- `frontend/components/RuleSuggestions.js`
+
+---
+
+## 📤 Final Deliverables (for Production)
+
+- [x] Deployed app (e.g. Vercel + Railway/Render)
+- [x] `/samples/` folder with CSVs
+- [x] All rules and validations exported in one zip
+- [x] Full README + deploy script
+- [x] X-Factor demo (optional, 2-min walkthrough)
+
+---
+
+## 🏁 Final Notes
+
+> Build for a **non-technical user** with messy spreadsheets. Use AI wherever it makes life easier: mapping headers, fixing JSON, validating rules, suggesting corrections, filtering with natural language.  
+> Deliver a crisp product, minimal friction, high clarity. ✨

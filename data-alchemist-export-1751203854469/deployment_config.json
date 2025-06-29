@@ -1,0 +1,16 @@
+{
+  "api_version": "v2",
+  "deployment_target": "production",
+  "required_dependencies": [
+    "pandas>=1.5.0",
+    "numpy>=1.20.0",
+    "ortools>=9.0.0"
+  ],
+  "environment_vars": {
+    "DATA_VALIDATION": "strict",
+    "LOG_LEVEL": "INFO",
+    "MAX_WORKERS": "auto"
+  },
+  "health_check_endpoint": "/health",
+  "metrics_enabled": true
+}
