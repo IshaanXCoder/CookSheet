@@ -1,7 +1,10 @@
 # Dependencies
 node_modules/
+
 */node_modules/
 
+.gitignore
+.cursor
 # Production builds
 .next/
 */build/
